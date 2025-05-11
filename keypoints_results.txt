@@ -1,0 +1,3 @@
+data/dry_skin.jpg: 276 ключевых точек
+data/oily_skin.jpg: 660 ключевых точек
+data/normal_skin.jpg: 299 ключевых точек

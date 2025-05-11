@@ -1,0 +1,21 @@
+review,sentiment
+"I love this product! My skin feels amazing.",positive
+"This moisturizer is the best I've ever used.",positive
+"Very happy with the results after a week.",positive
+"My skin is so soft and hydrated now.",positive
+"Excellent quality, highly recommend it.",positive
+"Absolutely terrible, made my skin worse.",negative
+"Very disappointing, I expected better.",negative
+"My skin became dry and itchy after using this.",negative
+"Not worth the money at all.",negative
+"I will never buy this again.",negative
+"The product smells nice but does nothing.",negative
+"Noticeable improvement in skin texture!",positive
+"Feels very light and pleasant on the skin.",positive
+"Good value for the price.",positive
+"Sadly, it broke me out.",negative
+"Caused redness and irritation.",negative
+"Perfect for my sensitive skin!",positive
+"A little greasy but works well.",positive
+"Didn't notice any difference.",negative
+"Really helped with my dry patches.",positive

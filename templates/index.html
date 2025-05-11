@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Beauty Personalization Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fafafa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        input[type="number"],
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #5cb85c;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .result {
+            background: #f0f8ff;
+            padding: 10px;
+            margin-top: 10px;
+            border-left: 5px solid #5cb85c;
+        }
+        img {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Beauty Personalization Platform</h1>
+
+        <!-- 1. Linear Regression -->
+        <section>
+            <h2>1. Predict Hydration Level (Linear Regression)</h2>
+            <form method="post">
+                <label>Oiliness (0-1):</label>
+                <input type="number" name="oil_lr" min="0" max="1" step="0.01" required>
+                <button type="submit" name="predict_hydration">Predict</button>
+                {% if hydration %}
+                <div class="result">Predicted hydration level: <strong>{{ hydration }}</strong></div>
+                {% endif %}
+            </form>
+        </section>
+
+        <!-- 2. Logistic Regression -->
+        <section>
+            <h2>2. Classify Skin Type (Logistic Regression)</h2>
+            <form method="post">
+                <label>Oiliness (0-1):</label>
+                <input type="number" name="oil_lr2" min="0" max="1" step="0.01" required>
+                <label>Moisture (0-1):</label>
+                <input type="number" name="moisture_lr2" min="0" max="1" step="0.01" required>
+                <button type="submit" name="classify_skin">Classify</button>
+                {% if skin_type %}
+                <div class="result">Skin Type: <strong>{{ skin_type.skin_type }} ({{ skin_type.type_name }})</strong>, Probability: {{ skin_type.probability }}</div>
+                {% endif %}
+            </form>
+        </section>
+
+        <!-- 3. Decision Tree -->
+        <section>
+           <h2>3. Recommend Product (Decision Tree)</h2>
+<form method="post">
+    <label>Oiliness (0-1):</label>
+    <input type="number" step="0.01" name="oiliness_dt" min="0" max="1" required><br>
+
+    <label>Moisture (0-1):</label>
+    <input type="number" step="0.01" name="moisture_dt" min="0" max="1" required><br>
+
+    <label>Skin Type (0 - Dry, 1 - Oily):</label>
+    <input type="number" name="skin_type_dt" min="0" max="1" required><br>
+
+    <button type="submit" name="recommend_product">Recommend</button>
+
+    {% if product_recommendation %}
+    <div class="result">Recommended product: <strong>{{ product_recommendation }}</strong></div>
+    {% endif %}
+</form>
+
+        </section>
+
+        <!-- 4. Random Forest -->
+        <section>
+            <h2>4. Multi-class Skin Classification (Random Forest)</h2>
+            <form method="post">
+                <label>Oiliness (0-1):</label>
+                <input type="number" name="oil_rf" min="0" max="1" step="0.01" required>
+                <label>Moisture (0-1):</label>
+                <input type="number" name="moisture_rf" min="0" max="1" step="0.01" required>
+                <button type="submit" name="multi_classify_skin">Classify</button>
+                {% if multi_skin_type %}
+                <div class="result">Multi-class Skin Type: <strong>{{ multi_skin_type }}</strong></div>
+                {% endif %}
+            </form>
+        </section>
+
+        <!-- 5. Naive Bayes -->
+        <section>
+            <h2>5. Analyze Review (Naive Bayes)</h2>
+            <form method="post">
+                <label>Review Text:</label>
+                <input type="text" name="review" required>
+                <button type="submit" name="analyze_review">Analyze</button>
+                {% if sentiment %}
+                <div class="result">Sentiment: <strong>{{ sentiment }}</strong></div>
+                {% endif %}
+            </form>
+        </section>
+
+        <!-- 6. KNN -->
+        <section>
+            <h2>6. Find Similar Clients (KNN)</h2>
+            <form method="post">
+                <label>Oiliness (0-1):</label>
+                <input type="number" name="oil_knn" min="0" max="1" step="0.01" required>
+                <label>Moisture (0-1):</label>
+                <input type="number" name="moisture_knn" min="0" max="1" step="0.01" required>
+                <button type="submit" name="find_similar_clients">Find</button>
+                {% if similar_clients %}
+                <div class="result">Similar Clients: <strong>{{ similar_clients }}</strong></div>
+                {% endif %}
+            </form>
+        </section>
+
+        <!-- 7. SVM -->
+        <section>
+            <h2>7. Precise Skin Classification (SVM)</h2>
+            <form method="post">
+                <label>Oiliness (0-1):</label>
+                <input type="number" name="oil_svm" min="0" max="1" step="0.01" required>
+                <label>Moisture (0-1):</label>
+                <input type="number" name="moisture_svm" min="0" max="1" step="0.01" required>
+                <button type="submit" name="precise_classify_skin">Classify</button>
+                {% if precise_skin_type %}
+                <div class="result">Precise Skin Type: <strong>{{ precise_skin_type }}</strong></div>
+                {% endif %}
+            </form>
+        </section>
+
+        <!-- 8. Gradient Boosting -->
+        <section>
+            <h2>8. Predict Product Effectiveness (Gradient Boosting)</h2>
+            <form method="post">
+                <label>Oiliness (0-1):</label>
+                <input type="number" name="oil_gb" min="0" max="1" step="0.01" required>
+                <label>Moisture (0-1):</label>
+                <input type="number" name="moisture_gb" min="0" max="1" step="0.01" required>
+                <button type="submit" name="predict_product_effectiveness">Predict</button>
+                {% if effectiveness %}
+                <div class="result">Effectiveness Prediction: <strong>{{ effectiveness }}</strong></div>
+                {% endif %}
+            </form>
+        </section>
+
+        <!-- 9. K-means -->
+        <section>
+            <h2>9. Client Segmentation (K-Means)</h2>
+            <form method="post">
+                <button type="submit" name="segment_clients">Segment</button>
+                {% if client_segments %}
+                <div class="result">Client Segments: <strong>{{ client_segments }}</strong></div>
+                {% endif %}
+            </form>
+        </section>
+
+        <!-- 10. Apriori -->
+        <section>
+            <h2>10. Find Product Associations (Apriori)</h2>
+            <form method="post">
+                <button type="submit" name="find_product_associations">Find Associations</button>
+                {% if associations %}
+                <div class="result">Associations: <strong>{{ associations }}</strong></div>
+                {% endif %}
+            </form>
+        </section>
+
+        <!-- 11. PCA -->
+        <section>
+            <h2>11. Visualize Data (PCA)</h2>
+            <form method="post">
+                <button type="submit" name="visualize_data">Visualize</button>
+                {% if pca_plot %}
+                <div class="result">PCA Plot: <strong>{{ pca_plot }}</strong></div>
+                {% endif %}
+            </form>
+        </section>
+
+        <!-- 12. SIFT -->
+        <section>
+            <h2>12. Analyze Skin Texture (SIFT)</h2>
+            <form method="post" enctype="multipart/form-data">
+                <label>Upload Skin Image:</label>
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit" name="upload_image">Analyze</button>
+                {% if sift_analysis %}
+                <div class="result">
+                    Type: <strong>{{ sift_analysis.type }}</strong><br>
+                    Keypoints: {{ sift_analysis.keypoints }}
+                </div>
+                <img src="{{ sift_analysis.image }}" alt="SIFT Analysis">
+                {% endif %}
+            </form>
+        </section>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Flask
+numpy
+pandas
+scikit-learn
+mlxtend
+opencv-python
+matplotlib
+scipy
